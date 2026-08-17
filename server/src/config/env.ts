@@ -18,4 +18,6 @@ if (missing.length > 0) {
   );
 }
 
-export const clientOrigin = process.env.CLIENT_URL ?? "http://localhost:5173";
+export const clientOrigin = (
+  process.env.CLIENT_URL ?? "http://localhost:5173"
+).replace(/\/+$/, "");
