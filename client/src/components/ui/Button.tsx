@@ -4,11 +4,7 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset";
 }
 
-function Button({
-  children,
-  onClick,
-  type = "button",
-}: ButtonProps) {
+function Button({ children, onClick, type = "button" }: ButtonProps) {
   return (
     <button
       type={type}

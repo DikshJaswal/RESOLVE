@@ -182,3 +182,105 @@
     border-right-color: var(--border);
   }
 }
+
+/* Keep the ticket list aligned even when Tailwind's arbitrary grid utility is not emitted. */
+@media (min-width: 640px) {
+  [class*="grid-cols-[minmax"] {
+    grid-template-columns: minmax(0, 1fr) 180px 100px 130px;
+  }
+}
+
+@media (max-width: 639px) {
+  [class*="grid-cols-[minmax"] {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 640px) {
+  [class*="grid-cols-[minmax"] > :nth-child(2),
+  [class*="grid-cols-[minmax"] > :nth-child(3),
+  [class*="grid-cols-[minmax"] > :nth-child(4) {
+    justify-self: start;
+  }
+}
+
+/* Ticket detail panel: keep metadata readable at narrow widths. */
+aside select,
+aside [class*="rounded-full"] {
+  white-space: nowrap;
+}
+
+aside select {
+  width: 160px;
+  flex: 0 0 160px;
+}
+
+/* On narrow detail panels, place the editable status control on its own row. */
+aside [class*="items-center"][class*="gap-2"] {
+  flex-wrap: wrap;
+}
+
+aside select {
+  flex: 1 1 100%;
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0 !important;
+}
+
+/* The ticket table has a fixed status column; long labels must not bleed into priority. */
+section select {
+  box-sizing: border-box;
+  width: 130px !important;
+  min-width: 0;
+  max-width: 130px;
+  appearance: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 4px;
+}
+
+/* Align each table value directly beneath its column heading. */
+[class*="grid-cols-[minmax"] > :nth-child(2),
+[class*="grid-cols-[minmax"] > :nth-child(3),
+[class*="grid-cols-[minmax"] > :nth-child(4) {
+  justify-self: center;
+}
+
+@media (max-width: 639px) {
+  [class*="grid-cols-[minmax"] > :nth-child(2),
+  [class*="grid-cols-[minmax"] > :nth-child(3),
+  [class*="grid-cols-[minmax"] > :nth-child(4) {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 520px) {
+  aside select {
+    width: 140px;
+    flex-basis: 140px;
+  }
+}
+
+aside [class*="min-h-[520px]"] {
+  min-height: 420px;
+}
+
+/* Explicit fallback for the ticket header and ticket rows. */
+@media (min-width: 640px) {
+  [class*="sm:grid-cols-"] {
+    grid-template-columns: minmax(0, 1fr) 180px 100px 130px !important;
+  }
+
+  [class*="sm:grid-cols-"] > :nth-child(2),
+  [class*="sm:grid-cols-"] > :nth-child(3),
+  [class*="sm:grid-cols-"] > :nth-child(4) {
+    justify-self: start !important;
+  }
+}
+
+@media (max-width: 639px) {
+  [class*="sm:grid-cols-"] {
+    grid-template-columns: 1fr !important;
+  }
+}
