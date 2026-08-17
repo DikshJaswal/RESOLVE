@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import pool from "../config/database";
 
-const password = process.env.SEED_PASSWORD ?? "Password123!";
+const password = process.env.SEED_PASSWORD;
 
 const users = [
   { name: "Test Customer", email: "customer@resolve.com", role: "CUSTOMER" },
@@ -54,6 +54,11 @@ async function ticketId(title: string, customerId: number) {
 }
 
 async function seed() {
+  if (!password) {
+    throw new Error(
+      "SEED_PASSWORD must be set before running the seed command",
+    );
+  }
   const passwordHash = await bcrypt.hash(password, 12);
   for (const user of users) {
     await pool.execute(
