@@ -55,11 +55,14 @@ export async function login(req: Request, res: Response) {
       return;
     }
 
-    console.error(error);
+    console.error("Login failure:", error);
+
+    const errorMessage =
+      error instanceof Error ? error.message : "Internal server error";
 
     res.status(500).json({
       success: false,
-      message: "Internal server error",
+      message: errorMessage,
     });
   }
 }
