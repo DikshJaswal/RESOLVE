@@ -221,6 +221,7 @@ function TicketsPage() {
   useEffect(() => {
     const timer = window.setTimeout(() => void load(), 150);
     return () => window.clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, search, status, priority]);
   function filter(setter: (value: string) => void, value: string) {
     setter(value);

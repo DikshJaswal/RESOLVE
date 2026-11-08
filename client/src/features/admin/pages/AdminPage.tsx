@@ -22,7 +22,6 @@ function AdminPage() {
     role: "AGENT",
   });
   const [error, setError] = useState("");
-  if (user?.role !== "ADMIN") return <Navigate to="/" replace />;
   async function load() {
     try {
       const result = await api<{ users: Staff[] }>("/users");
@@ -32,9 +31,12 @@ function AdminPage() {
     }
   }
   useEffect(() => {
+    if (user?.role !== "ADMIN") return;
     const timer = window.setTimeout(() => void load(), 0);
     return () => window.clearTimeout(timer);
-  }, []);
+  }, [user?.role]);
+
+  if (user?.role !== "ADMIN") return <Navigate to="/" replace />;
   async function create(event: FormEvent) {
     event.preventDefault();
     try {

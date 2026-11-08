@@ -34,10 +34,14 @@ export default function AttachmentPanel({ ticketId }: { ticketId: number }) {
     }
   }
   useEffect(() => {
-    void load();
-    void api<{ ticket: { priority: string } }>(`/tickets/${ticketId}`)
-      .then((result) => setPriority(result.ticket.priority))
-      .catch(() => undefined);
+    const timer = window.setTimeout(() => {
+      void load();
+      void api<{ ticket: { priority: string } }>(`/tickets/${ticketId}`)
+        .then((result) => setPriority(result.ticket.priority))
+        .catch(() => undefined);
+    }, 0);
+    return () => window.clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ticketId]);
 
   async function updatePriority(value: string) {
