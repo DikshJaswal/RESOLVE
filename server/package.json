@@ -13,7 +13,8 @@
     "db:migrate:active-users": "tsx src/database/migrateActiveUsers.ts",
     "db:migrate:notifications": "tsx src/database/migrateNotifications.ts",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:e2e": "tsx src/database/verifyAllFeatures.ts"
   },
   "keywords": [],
   "author": "",
