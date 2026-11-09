@@ -1,6 +1,7 @@
 # RESOLVE — Role-Based Support Workspace
 
 [![Live Demo](https://img.shields.io/badge/Demo-Live%20App-0ea5e9?style=for-the-badge&logo=vercel)](https://resolve-pink-eight.vercel.app/)
+[![CI](https://github.com/DikshJaswal/RESOLVE/actions/workflows/ci.yml/badge.svg)](https://github.com/DikshJaswal/RESOLVE/actions/workflows/ci.yml)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React 19](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
 [![Express 5](https://img.shields.io/badge/Express_5-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
